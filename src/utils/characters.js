@@ -18,15 +18,18 @@ export const characters = {
 
     luke: {
         name: 'Luke Skywalker',
-        img: friend10
+        img: friend10,
+        id_person: 1
     },
     yoda: {
         name: 'Yoda',
-        img: friend9
+        img: friend9,
+        id_person: 0
     },
     obi_wan: {
-        name: 'Obi-Wan Keno-bi',
-        img: friend8
+        name: 'Obi-Wan Kenobi',
+        img: friend8,
+        id_person: 10
     },
     falcon: {
         name: 'Falcon',
@@ -34,15 +37,18 @@ export const characters = {
     },
     leia: {
         name: 'Leia',
-        img: friend6
+        img: friend6,
+        id_person: 5
     },
     han_solo: {
         name: 'Han Solo',
-        img: friend5
+        img: friend5,
+        id_person: 14
     },
     chewbacca: {
         name: 'Chewbacca',
-        img: friend5
+        img: friend5,
+        id_person: 13
     },
     ewok: {
         name: 'Wicket Hystrix Warrick',
@@ -50,11 +56,13 @@ export const characters = {
     },
     c3p0: {
         name: 'C-3PO',
-        img: friend2
+        img: friend2,
+        id_person: 2
     },
     r2d2: {
         name: 'R2D2',
-        img: friend1
+        img: friend1,
+        id_person: 3
     },
 
 };

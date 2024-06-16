@@ -1,19 +1,26 @@
 import React, {useEffect, useState} from 'react';
 import styles from "../css/aboutMe.module.css";
 import {BASE_URL, period_month} from "../utils/constants.js";
+import {useParams} from "react-router-dom";
+import  {characters} from "../utils/characters.js";
+
 
 const AboutMe = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [character, setCharacter] = useState({});
+    const {heroId} = useParams()
 
     useEffect(() => {
-        console.log("AboutMe mount")
-        const character = JSON.parse(localStorage.getItem("character"));
+        // console.log("AboutMe mount")
+        const fetchCharacter = (id)=>{
+            const characterChange= characters[id]
+            const {id_person} = characterChange;
+        const character = JSON.parse(localStorage.getItem(`character_${id}`));
         if (character && (Date.now() - character.time) < period_month) {
             setIsLoading(false);
             setCharacter(character.payload);
         } else {
-            fetch(`${BASE_URL}/v1/peoples/1`)
+            fetch(`${BASE_URL}/v1/peoples/${id_person}`)
                 .then(response => response.json())
                 .then(data => {
                     const hero = {
@@ -29,18 +36,20 @@ const AboutMe = () => {
                         payload: hero,
                         time: Date.now()
                     }
-                    localStorage.setItem("character", JSON.stringify(info))
+                    localStorage.setItem(`character_${id}`, JSON.stringify(info))
                 })
+                }
         }
-        return ()=>{
-            console.log("AboutMe unmounted")
+        if(heroId) {
+            fetchCharacter(heroId);
+
         }
-    }, []);
+    }, [heroId]);
 
     if (isLoading) {
         return (
             <div className="spinner-border text-success"></div>
-        )
+        );
     } else {
         return (
             <div className={styles.hero_box}>
@@ -55,3 +64,5 @@ const AboutMe = () => {
 }
 
 export default AboutMe;
+
+
