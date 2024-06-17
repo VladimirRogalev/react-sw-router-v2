@@ -47,7 +47,7 @@ export const characters = {
     },
     chewbacca: {
         name: 'Chewbacca',
-        img: friend5,
+        img: friend4,
         id_person: 13
     },
     ewok: {
